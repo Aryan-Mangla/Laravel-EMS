@@ -20,24 +20,30 @@
                 </li>
             </ul>
             <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->name }}
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
-                        </li>
-                        <li>
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
-                                <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </a>
-                            </form>
-                        </li>
-                    </ul>
-                </li>
+                @if (Auth::check())
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                                        {{ __('Log Out') }}
+                                    </a>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('Log In') }}</a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
@@ -49,18 +55,24 @@
         <a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
     </div>
     <div class="pt-4 pb-1">
-        <div class="px-4">
-            <div class="font-weight-bold">{{ Auth::user()->name }}</div>
-            <div class="text-muted">{{ Auth::user()->email }}</div>
-        </div>
-        <div class="mt-3">
-            <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-                <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
-                    {{ __('Log Out') }}
-                </a>
-            </form>
-        </div>
+        @if (Auth::check())
+            <div class="px-4">
+                <div class="font-weight-bold">{{ Auth::user()->name }}</div>
+                <div class="text-muted">{{ Auth::user()->email }}</div>
+            </div>
+            <div class="mt-3">
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item" href="#" onclick="event.preventDefault(); this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </a>
+                </form>
+            </div>
+        @else
+            <div class="px-4">
+                <a class="dropdown-item" href="{{ route('login') }}">{{ __('Log In') }}</a>
+            </div>
+        @endif
     </div>
 </div>
