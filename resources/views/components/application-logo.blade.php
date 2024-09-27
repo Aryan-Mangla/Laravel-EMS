@@ -1,1 +1,1 @@
-<div class=""><h1 class="fw-bolder">Hub <span> Fiesta</span></h1></div>
+<div class="fw-bolder">Hub<span class="theme-text">Fiesta</span></div>

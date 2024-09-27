@@ -1,5 +1,7 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
-
+.body{
+    background-color: F8F8FA;
+}
 .left-pos{
     left: -79px!important;
 }
@@ -11,4 +13,7 @@
 }
 .theme-bg{
     color: #7848F4;
+}
+.active{
+    background-color: #7848F4;
 }

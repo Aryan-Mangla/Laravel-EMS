@@ -4,7 +4,15 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <ul class=" text-light m-0">
+            <li>
+            <a class="text-dark text-decoration-none nav-link fs-3" href="/">
+                <x-application-logo class="" />
+            </a>
+            </li>
+           
+        </ul>
             <ul class="navbar-nav">
                 @auth
                     @if (auth()->user()->role === 'admin')
