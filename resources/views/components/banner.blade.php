@@ -1,8 +1,8 @@
-<div id="bannerCarousel" class="carousel slide relative" data-bs-ride="carousel">
-    <div class="carousel-inner relative w-full overflow-hidden">
+<div id="bannerCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
         @foreach($banners as $key => $banner)
-            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                <img src="{{ asset('storage/' . $banner->image) }}" class="d-block w-full h-auto" alt="{{ basename($banner->image) }}">
+            <div class="carousel-item @if($key == 0) active @endif">
+            <img src="{{ asset('storage/' . $banner->image) }}" class="d-block w-100 banner-h" alt="{{ basename($banner->image) }}">
             </div>
         @endforeach
     </div>

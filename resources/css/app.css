@@ -1,0 +1,14 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.left-pos{
+    left: -79px!important;
+}
+.banner-h{
+    height: 35em;
+}
+.theme-text{
+    color: #7848F4;
+}
+.theme-bg{
+    color: #7848F4;
+}

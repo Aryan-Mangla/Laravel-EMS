@@ -6,14 +6,14 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Banner extends Component
+class navbar extends Component
 {
     /**
      * Create a new component instance.
      */
     public function __construct()
     {
-        $this->banners = $banners;
+        //
     }
 
     /**
@@ -21,6 +21,6 @@ class Banner extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.banner');
+        return view('components.navbar');
     }
 }
