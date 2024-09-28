@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light position-sticky top-0 z-1">
     <div class="container">
        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,6 +14,11 @@
            
         </ul>
             <ul class="navbar-nav">
+            <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('Home') ? 'active rounded' : '' }}" href="{{ route('Home') }}">
+                            {{ __('Home') }}
+                        </a>
+                    </li>
                 @auth
                     @if (auth()->user()->role === 'admin')
                         <li class="nav-item">
