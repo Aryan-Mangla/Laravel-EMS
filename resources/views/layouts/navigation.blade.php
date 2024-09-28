@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="{{ route('dashboard') }}">
-            <x-application-logo class="h-9" />
+    <div class="container">
+        <a class="navbar-brand fs-3" href="{{ route('dashboard') }}">
+            <x-application-logo />
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -14,12 +14,12 @@
             <div class="offcanvas-body">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                        <a class="nav-link {{ request()->routeIs('dashboard') ? 'active rounded' : '' }}" href="{{ route('dashboard') }}">
                             {{ __('Dashboard') }}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('banner.index') ? 'active' : '' }}" href="{{ route('banner.index') }}">
+                        <a class="nav-link {{ request()->routeIs('banner.index') ? 'active rounded' : '' }}" href="{{ route('banner.index') }}">
                             {{ __('Banner Image') }}
                         </a>
                     </li>

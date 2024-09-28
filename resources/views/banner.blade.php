@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@include('layouts.navigation')
+
 <div class="row">
-
-
     <!-- Banner Management Column -->
     <div class="col-md-12">
         <div class="container mt-5">

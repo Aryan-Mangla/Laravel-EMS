@@ -8,3 +8,16 @@
 </div>
 
 @endsection
+
+@section('script')
+<script>
+     $(document).ready(function() {
+        
+        @if(session('error'))
+            $('#messageModal').modal('show');
+        @endif
+    });
+</script>
+
+
+@endsection
