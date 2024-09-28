@@ -41,6 +41,7 @@ public function publicIndex()
             'promo' => 'required|integer',
             'active' => 'required|boolean',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+             'images' => 'required|array|max:5',
         ]);
 
         $slug = $request->slug ?? Str::slug($request->title);

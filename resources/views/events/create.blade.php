@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label for="images">Upload Images (up to 5)</label>
-            <input type="file" name="images[]" class="form-control" multiple>
+                        <input type="file" name="images[]" class="form-control" multiple accept="image/*" required>
         </div>
 
         <div class="form-group">

@@ -29,10 +29,10 @@ Route::middleware(['auth', 'verified', AdminAuth::class])->group(function () {
     Route::post('/dashboard/banners/bulk-delete', [BannerController::class, 'bulkDelete'])->name('banner.bulkDelete');
 
     // Event Routes
-    Route::get('/dashboard/events', [EventController::class, 'index'])->name('events.index'); // List all events
-    Route::get('/dashboard/events/create', [EventController::class, 'create'])->name('events.create'); // Create event form
-    Route::post('/dashboard/events', [EventController::class, 'store'])->name('events.store'); // Store event
-    Route::get('/dashboard/events/{event}', [EventController::class, 'show'])->name('events.show'); // admin event display
+    Route::get('/dashboard/events', [EventController::class, 'index'])->name('events.index');
+    Route::get('/dashboard/events/create', [EventController::class, 'create'])->name('events.create');
+    Route::post('/dashboard/events', [EventController::class, 'store'])->name('events.store');
+    Route::get('/dashboard/events/{event}', [EventController::class, 'show'])->name('events.show');
 });
 
 require __DIR__.'/auth.php';
