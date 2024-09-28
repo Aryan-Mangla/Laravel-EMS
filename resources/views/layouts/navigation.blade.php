@@ -23,6 +23,16 @@
                             {{ __('Banner Image') }}
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('events.index') ? 'active rounded' : '' }}" href="{{ route('events.index') }}">
+                            {{ __('My Events') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('events.create') ? 'active rounded' : '' }}" href="{{ route('events.create') }}">
+                            {{ __('Create Event') }}
+                        </a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav">
                     @if (Auth::check())
