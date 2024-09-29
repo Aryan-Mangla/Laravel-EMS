@@ -7,10 +7,10 @@
     <div class="container mt-4">
         <h2>Upcoming Events</h2>
         @php
-            $events = App\Models\Event::where('active', 1)->take(6)->get(); // Fetch only 6 active events
+            $events = App\Models\Event::where('active', 1)->take(6)->get();
         @endphp
 
-        @if($events->isNotEmpty()) <!-- Check if events exist -->
+        @if($events->isNotEmpty())
             <div class="row">
                 @foreach($events as $event)
                     <div class="col-md-4 mb-3">
