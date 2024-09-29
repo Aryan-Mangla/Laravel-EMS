@@ -58,13 +58,25 @@ public function publicIndex()
             'active' => $request->active,
         ]);
 
-        // Handle image uploads
-        if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $image) {
-                $path = $image->store('event_images', 'public');
-                $event->images()->create(['image_path' => $path]);
-            }
-        }
+        
+foreach ($request->file('images') as $image) {
+    
+    $originalName = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+    $extension = $image->getClientOriginalExtension();
+    $imageName = $originalName . '.' . $extension;
+    $counter = 1;
+
+    // Check if the file already exists in the public directory
+    while (file_exists(public_path('images/events/' . $imageName))) {
+        $imageName = $originalName . '(' . $counter . ').' . $extension;
+        $counter++;
+    }
+    $image->move(public_path('images/events'), $imageName);
+    $event->images()->create([
+        'image_path' => $imageName,
+    ]);
+}
+
 
         return redirect()->route('events.index')->with('success', 'Event created successfully!');
     }

@@ -16,7 +16,8 @@
     <div class="carousel-inner my-5">
         @foreach($event->images as $index => $image)
             <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                <img src="{{ asset('storage/' . $image->image_path) }}" class="d-block w-100 img-fluid mh-flyer" alt="Event Image {{ $index + 1 }}">
+            <img src="{{ asset('images/events/'. $image->image_path) }}" class="d-block w-100 img-fluid mh-flyer" alt="Event Image {{ $index + 1 }}">
+
             </div>
         @endforeach
     </div>

@@ -16,7 +16,7 @@
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <!-- Event Image -->
-                            <img src="{{ asset('storage/' . $event->images->first()->image_path ?? 'default-image.png') }}" class="card-img-top" alt="Event Image">
+                            <img src="{{ asset('images/events/' . ($event->images->first()->image_path ?? 'default-image.png')) }}" class="card-img-top" alt="Event Image">
                             <div class="card-body">
                                 <!-- Event Title -->
                                 <h5 class="card-title">{{ $event->title }}</h5>

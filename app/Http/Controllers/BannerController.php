@@ -30,11 +30,7 @@ class BannerController extends Controller
                 
                 return redirect()->route('banner.index')->with('error', 'An image with this name already exists. Please choose a different name.');
             }
-
-          
             $path = $request->file('image')->storeAs('banners', $originalName, 'public');
-    
-           
             Banner::create([
                 'image' => $path,
             ]);
@@ -42,14 +38,13 @@ class BannerController extends Controller
             
             return redirect()->route('banner.index')->with('success', 'Banner image uploaded successfully');
         } else {
-           
             return redirect()->route('banner.index')->with('error', 'No image was uploaded. Please try again.');
         }
     }
 
     public function destroy(Banner $banner)
     {
-       
+    
         Storage::disk('public')->delete($banner->image);
     
         
