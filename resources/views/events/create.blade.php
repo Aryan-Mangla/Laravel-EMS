@@ -27,7 +27,18 @@
             <label for="meta_description">Meta Description</label>
             <input type="text" name="meta_description" class="form-control">
         </div>
-
+        <div class="form-group">
+            <label for="event_start_time">Event Start Time</label>
+            <input type="datetime-local" name="event_start_time" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="department">Department</label>
+            <input type="text" name="department" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="event_end_time">Event End Time</label>
+            <input type="datetime-local" name="event_end_time" class="form-control" required>
+        </div>
         <div class="form-group">
             <label for="images">Upload Images (up to 5)</label>
                         <input type="file" name="images[]" class="form-control" multiple accept="image/*" required>

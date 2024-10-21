@@ -40,6 +40,9 @@ public function publicIndex()
             'canonical' => 'nullable|url',
             'promo' => 'required|integer',
             'active' => 'required|boolean',
+            'department' => 'required|string|max:255',
+            'event_start_time' => 'required|date',
+            'event_end_time' => 'required|date|after:event_start_time',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
              'images' => 'required|array|max:5',
         ]);

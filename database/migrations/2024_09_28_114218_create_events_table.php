@@ -22,6 +22,9 @@ return new class extends Migration
             $table->string('canonical')->nullable();
             $table->boolean('promo')->default(0); // Promotion (0 for new, 1 for priority)
             $table->boolean('active')->default(1); // Active or inactive (1 for active, 0 for inactive)
+            $table->string('department');
+            $table->timestamp('event_start_time');
+            $table->timestamp('event_end_time'); 
             $table->timestamps();
         });
     }
