@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('description');
             $table->string('meta_title')->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
             $table->boolean('active')->default(1); // Active or inactive (1 for active, 0 for inactive)
             $table->string('department');
             $table->timestamp('event_start_time');
-            $table->timestamp('event_end_time'); 
+            $table->timestamp('event_end_time');
             $table->timestamps();
         });
     }
