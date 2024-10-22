@@ -22,13 +22,13 @@
         @endforeach
     </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="prev">
+    <button class="carousel-control-prev d-none" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
+        <span class="visually-hidden ">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="next">
+    <button class="carousel-control-next d-none" type="button" data-bs-target="#eventImageCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
+        <span class="visually-hidden ">Next</span>
     </button>
 </div>
 
@@ -37,5 +37,10 @@
 <div class="container">
 <h2>{{ $event->title }}</h2>
 <p>{{ $event->description }}</p>
+<p>{{ $event->department }}</p>
+
+<p>{{ $event->event_start_time }}</p>
+<p>{{ $event->event_end_time }}</p>
+
 </div>
 @endsection

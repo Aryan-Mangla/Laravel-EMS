@@ -59,6 +59,11 @@ public function publicIndex()
             'meta_description' => $request->meta_description ?: Str::limit($request->description, 160),
             'promo' => $request->promo,
             'active' => $request->active,
+            'department'=> $request->department,
+            'event_start_time'=> $request->event_start_time,
+            'event_end_time'=> $request->event_end_time,
+            
+
         ]);
 
         
