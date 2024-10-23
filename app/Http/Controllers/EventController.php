@@ -1,5 +1,6 @@
 <?php
-
+// * * * * * php /path-to-your-project/artisan schedule:run >> /dev/null 2>&1
+// add this to crone job inorder to make it work
 namespace App\Http\Controllers;
 
 use App\Models\Event;
@@ -10,17 +11,46 @@ use Illuminate\Support\Str;
 class EventController extends Controller
 {
     public function index()
-{
-    $events = Event::where('user_id', auth()->id())->get(); 
-    return view('events.index', compact('events'));
-}
+    {
+        // Get the current date and time
+        $now = Carbon::now();
 
-// All events
-public function publicIndex()
-{
-    $events = Event::where('active', 1)->paginate(10); // Adjust pagination as needed
-    return view('events.public_index', compact('events'));
-}
+        // Update event statuses based on start and end time
+        $events = Event::where('user_id', auth()->id())->get();
+        foreach ($events as $event) {
+            if ($now->isAfter($event->event_end_time)) {
+                $event->active = 0; // Mark as inactive if the event has ended
+            } elseif ($now->isBetween($event->event_start_time, $event->event_end_time)) {
+                $event->active = 1; // Mark as active if it's within the event period
+            } else {
+                $event->active = 0; // Otherwise, it's not active yet
+            }
+            $event->save();
+        }
+
+        return view('events.index', compact('events'));
+    }
+
+    public function publicIndex()
+    {
+        // Get the current date and time
+        $now = Carbon::now();
+
+        // Update public events statuses
+        $events = Event::where('active', 1)->paginate(10); // Adjust pagination as needed
+        foreach ($events as $event) {
+            if ($now->isAfter($event->event_end_time)) {
+                $event->active = 0;
+            } elseif ($now->isBetween($event->event_start_time, $event->event_end_time)) {
+                $event->active = 1;
+            } else {
+                $event->active = 0;
+            }
+            $event->save();
+        }
+
+        return view('events.public_index', compact('events'));
+    }
 
 
 
@@ -39,7 +69,7 @@ public function publicIndex()
             'slug' => 'nullable|unique:events',
             'canonical' => 'nullable|url',
             'promo' => 'required|integer',
-            'active' => 'required|boolean',
+            
             'department' => 'required|string|max:255',
             'event_start_time' => 'required|date',
             'event_end_time' => 'required|date|after:event_start_time',
@@ -58,7 +88,7 @@ public function publicIndex()
             'meta_title' => $request->meta_title ?: $request->title,
             'meta_description' => $request->meta_description ?: Str::limit($request->description, 160),
             'promo' => $request->promo,
-            'active' => $request->active,
+            
             'department'=> $request->department,
             'event_start_time'=> $request->event_start_time,
             'event_end_time'=> $request->event_end_time,

@@ -70,7 +70,7 @@ body {
     border-radius: 15px;
     border: 3px solid transparent;
     background: linear-gradient(white, white) padding-box, 
-                linear-gradient(135deg, #7848F4, transparent, #7848F4) border-box;
+                linear-gradient(135deg, rgb(255, 0, 0), transparent, red) border-box;
     z-index: -1; /* Ensure border stays behind the card content */
     background-size: 400% 400%; /* To cover the full rotating area */
     animation: rotateBorder 5s infinite linear; /* Same rotation behavior */
