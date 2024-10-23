@@ -12,21 +12,27 @@ class UpdateEventStatus extends Command
 
     public function handle()
     {
-        $now = Carbon::now();
-        $events = Event::all();
+        $now = Carbon::now()->setTimezone('Asia/Kolkata');
 
+        $this->info('Current Time: ' . $now);
+    
+        $events = Event::all();
+    
         foreach ($events as $event) {
+            $this->info('Event ID: ' . $event->id . ', Event End Time: ' . $event->event_end_time);
             if ($now->isAfter($event->event_end_time)) {
-                $event->active = 0; // Inactive if ended
+                $event->active = 0;
             } elseif ($now->isBetween($event->event_start_time, $event->event_end_time)) {
-                $event->active = 1; // Active if ongoing
+                $event->active = 1;
             } else {
-                $event->active = 0; // Inactive if hasn't started
+                $event->active = 0;
             }
             $event->save();
+            $this->info('Event ID: ' . $event->id . ', Active Status: ' . $event->active);
         }
-
+    
         $this->info('Event statuses updated successfully.');
     }
+    
 }
 
